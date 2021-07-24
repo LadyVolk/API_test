@@ -13,7 +13,7 @@ class UsersService{
     }
 
     async findByEmail(email: string) {
-        return this.usersRepository.findOne(email)
+        return this.usersRepository.findOne({email})
     }
 
     async create(email: string){

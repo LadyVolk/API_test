@@ -7,6 +7,9 @@ class MessagesController{
 
     async create(request: Request, response: Response){
         const {admin_id, text, user_id} = request.body;
+
+        console.log("request.body -> message controller", request.body)
+
         const messagesService = new MessagesService
 
         const message = await messagesService.create({

@@ -24,14 +24,19 @@ io.on("connect", (socket)=> {
             socket_id,
             user_id: user.id
            });
+           user_id = user.id;
         }else{
+            user_id = userExist.id;
             const connection = await connectionsService.findByUserId(userExist.id);
+
+            console.log("connection", connection)
 
             if(!connection){
                 await connectionsService.create({
                     socket_id,
                     user_id: userExist.id
                 });
+            
             }else{
                 connection.socket_id = socket_id;
                 await connectionsService.create(connection);
