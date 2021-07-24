@@ -10,7 +10,7 @@ class User{
     email: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    create_at: Date;
 
     constructor(){
         if(!this.id){

@@ -5,26 +5,27 @@ import { User } from "./User";
 @Entity("Connections")
 class Connection{
     @PrimaryColumn()
-    id: string;
+  id: string;
 
-    @Column()
-    admin_id: string;
+  @Column()
+  admin_id: string;
 
-    @Column()
-    socket_id: string;
+  @Column()
+  user_id: string;
 
-    @JoinColumn({name: "user_id"})
-    @ManyToOne(()=>User)
-    user: User;
-    
-    @Column()
-    user_id: string;
-    
-    @CreateDateColumn()
-    created_at: Date;
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
-    @UpdateDateColumn()
-    update_at: Date;
+  @Column()
+  socket_id: string;
+
+  @CreateDateColumn()
+  create_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
 
     constructor(){
         if(!this.id){
