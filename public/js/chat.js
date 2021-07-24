@@ -33,18 +33,20 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
         var template_client = document.getElementById("message-user-template").innerHTML;
         var template_admin = document.getElementById("admin-template").innerHTML;
 
+        console.log("template_client:", template_client)
+
         messages.forEach(message => {
             if(message.admin_id === null){
                 const rendered = Mustache.render(template_client, {
                     message: message.text,
                     email
                 })
-                document.getElementById("message").innerHTML += rendered;
+                document.getElementById("messages").innerHTML += rendered;
             }else{
                 const rendered = Mustache.render(template_admin, {
                     message_admin: message.text 
                 });
-                document.getElementById("message").innerHTML += rendered;
+                document.getElementById("messages").innerHTML += rendered;
             }
         });
     });
@@ -57,7 +59,7 @@ document.querySelector("#start_chat").addEventListener("click", (event) => {
         document.getElementById("messages").innerHTML() += rendered;
     });
 
-    document.querySelector("#send_message_button").addEventListener("clicker", (event) =>{
+    document.querySelector("#send_message_button").addEventListener("click", (event) =>{
         const txt = document.getElementById("message_user");
         const params = {
             text,
